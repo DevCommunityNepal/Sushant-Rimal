@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QR CODE Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="m-3">
+      <div class="card card-default">
+        <div class="card-header">QR Generator</div>
+        <div class="card-body">
+          <% if(QR_code){ %>
+          <h3 class="text-center">Scan this from your scanner</h3>
+          <div class="text-center my-3">
+            <img src="<%= QR_code %>" />
+            <br />
+            <a href="/download?file_path=<%= img_src %>"> Download</a>
+          </div>
+          <% }else{ %>
+          <form action="/" method="POST">
+            <div class="form-group">
+              <label for="url">Enter URL</label>
+              <input
+                type="text"
+                name="url"
+                id="url"
+                class="form-control"
+                required
+                placeholder="Enter URL here.."
+              />
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary mt-2">
+                Generate
+              </button>
+            </div>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-3 pt-5">
+      <h1>FAQ</h1>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Information about our QR code generator
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              You can generate free QR codes on this website. A QR code is a two
+              dimensional barcode that stores information in black and white
+              dots (called data pixels or “QR code modules”). Besides the black
+              and white version, you can also create a colored QR code. For
+              these codes to work without problems, make sure the contrast is
+              sufficient and the result is not a negative (in terms of color).
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              What is a QR code?
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              A QR code is a two-dimensional code (2D code, matrix code), this
+              means it contains data not only in one dimension (e.g.
+              horizontally from left to right like the barcodes on the products
+              in e.g. your grocery store) but also in a second dimension
+              (vertical and horizontal). The acronym QR is short for “Quick
+              Response”. QR codes are also often called 2D barcodes. However,
+              this notation is not correct, because it means “a two-dimensional
+              code consisting of bars” although a QR code consists of pixels
+              (so-called “modules”) instead of bars.
+
+              <br />
+              <br />
+
+              The QR code was invented by the automotive industry. Toyota asked
+              their supplier Denso Wave to develop a barcode to safely and
+              easily identify components. QR generators were originally used in
+              industrial applications. Therefore, they had to be easily
+              printable in form and size as well as staying legible when
+              partially destroyed or dirty. Like other codes, the QR code symbol
+              can be captured with imaging devices like a camera and then
+              digitally processed. A software prepares the captured image data
+              until it can be algorithmically processed according to the QR code
+              standard so the QR code content can be read. This process is
+              assisted by the use of the Reed-Solomon error correction—which is
+              also used for audio CDs to ensure that the data can still be read
+              correctly even with small scratches on the surface. The error
+              correction capabilities are also used for QR codes with logo
+              (often also called “Design QR code” or simply “QR code with image
+              / icon / logo”).
+
+              <br />
+              <br />
+              This QR code graphics are faulty “ex works” as the normally
+              centered placed logo in a QR code hides some of its data just as
+              would ordinary dirt. Because of the excellent error correction
+              (they can be read even if up to 30 % of the surface gets
+              destroyed) and the high memory capacity (in comparison with other
+              bar codes), the QR code also gained traction outside the
+              automotive industry. Modern mobile phones are powerful enough to
+              run QR code reading software and also usually provide a camera.
+              This combination brought up a variety of possibilities to use the
+              QR code to easily transfer data without typing to the peoples new
+              communication center, the smartphone. Therefore, a widespread use
+              of QR codes became possible with the recent smartphone boom and
+              the increasing spread of mobile internet.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              Create a QR code
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              Just enter your URL. The QR code will be generated automatically
+              as you type. Just click on the “Download” button to get the
+              created QR code image then (the image is available as EPS or SVG
+              vector graphic, as well as high-resolution PNG, GIF or JPEG raster
+              graphics format). QR codes are the way to go to create a link
+              between the real world products (tagged with the QR code) and the
+              Internet. Mobile, anywhere, anytime. Because QR codes make it so
+              easy to transfer a web link to a mobile phone, they provide a
+              significantly lower barrier to visit a site with a smart phone.
+              But you can also work with other texts and data, such as
+              advertising messages, telephone numbers and even entire business
+              cards in vCard format. Just encode them with our QR code generator
+              to easily transfer the data to mobile devices.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              What kind of information can be stored in a QR code?
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              QR codes store binary data. Therefore, possibly all kinds of
+              information can be stored in a QR code. However, the storage
+              capacity of a QR codes is limited to a maximum of 3 kB (using an 8
+              bit encoding) which naturally limits the possibility to directly
+              store images and sounds. A link to a website which provides the
+              multimedia content normally is the more sensible way to show image
+              galleries or music via QR code. You can store short texts, SMS,
+              all kinds of URLs and websites (Youtube, Facebook, Homepages),
+              contact details (e.g vCards for QR code business cards, meCard),
+              dates and calendar entries (iCal), telephone numbers, email
+              messages, WiFi access credentials, geo and navigation data and
+              much more. But you have to keep in mind that not every QR code
+              scanner out there is able to process every type of data. You may
+              have a look at out overview about “different QR code types and
+              applications” if you need more information.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <footer>
+        <div class="d-flex align-items-center">
+          <a
+            href="/"
+            class="color-$black mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
+          >
+            QR CODE GENERATOR
+          </a>
+          <span class="mb-3 mb-md-0 text-muted">© 2022 Final Year Project</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
